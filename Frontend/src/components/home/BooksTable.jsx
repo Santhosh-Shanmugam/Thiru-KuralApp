@@ -12,9 +12,9 @@ const BooksTable = ({ books }) => {
       <table className="table-auto w-full border-collapse border border-gray-400">
         <thead>
           <tr>
-            <th className="border border-gray-400 px-4 py-2">Kural</th>
-            <th className="border border-gray-400 px-4 py-2">KuralNo.</th>
-            <th className="border border-gray-400 px-4 py-2">Actions</th>
+            <th className="border border-gray-400 px-4 py-2">திருக்குறள்</th>
+            <th className="border border-gray-400 px-4 py-2">குறள் ஏன்</th>
+            <th className="border border-gray-400 px-4 py-2">செயல்கள்</th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@ const BooksTable = ({ books }) => {
             books.map((book) => (
               <tr key={book._id}>
                 <td className="border border-gray-400 px-4 py-2">{book.title}</td>
-                <td className="border border-gray-400 px-4 py-2">{book.author}</td>
+                <td className="border border-gray-400 px-4 py-2 ">{book.author}</td>
                 <td className="border border-gray-400 px-4 py-2 flex gap-x-2">
                   <span>
                     <PiBookOpenTextLight className="text-red-300 text-2xl" />

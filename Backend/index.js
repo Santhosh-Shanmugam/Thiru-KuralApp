@@ -12,20 +12,6 @@ app.use(express.json());
 
 app.use(cors());//allow all orgins with default cors(*)
 
-// app.use(
-//   cors({
-//     orgin: 'http://localhost:3000',
-//     methods: ['GET', 'POST','PUT','DELETE'],
-//     allowesHeaders: ['Content=Type'],
-//   })
-// );
-
-
-app.get('/', (req,res)=>{
-    console.log(req)
-    return res.status(234).send("Welcome");
-});
-
 
 app.use('/books', BooksRoute);
 

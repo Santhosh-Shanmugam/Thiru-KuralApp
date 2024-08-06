@@ -37,7 +37,8 @@ router.get('/tasks', async (req,res) => {
   try{
     const books = await Book.find({});
 
-    return res.send(books)
+    return res.send(books);
+    res.redirect('/tasks');
   }
   catch(err) {
       console.log(err.message);

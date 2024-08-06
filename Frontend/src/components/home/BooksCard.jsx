@@ -14,12 +14,12 @@ const BooksCard = ({ books }) => {
           key={item._id}
           className="border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl"
         >
-          <h2 className="absolute top-1 right-2 px-4 py-1 bg-red-300 rounded-lg">
+          {/* <h2 className="absolute top-1 right-2 px-4 py-1 bg-red-300 rounded-lg">
             {item.publishYear}{" "}
-          </h2>
-          <h4 className="my-4 text-gray-500">{item._id}</h4>
+          </h2> */}
+          <h4 className="my-4 text-gray-500"> </h4>
           <div className="flex justify-start items-center gap-x-2">
-            <PiBookOpenTextLight className="text-red-300 text-2xl" />
+            <PiBookOpenTextLight className="text-red-900 text-4xl" />
             <h2 className="my-1">{item.title}</h2>
           </div>
           

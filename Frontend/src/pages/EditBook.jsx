@@ -38,7 +38,7 @@ const EditBook = () => {
         .put(`http://localhost:6969/books/edit/${id}`,data)
         .then(()=>{
           setLoading(false);
-          navigate('/');
+          navigate('/home');
         })
         .catch((err)=>{
           setLoading(false);
@@ -48,13 +48,14 @@ const EditBook = () => {
   };
 
   return (
-    <div className='p-4'>
+    <>
       <BackButton/>
-      <h1 className='text-3xl my-4'>Edit</h1>
+      <h1 className='text-3xl my-4 '>தொகு</h1>
+    <div className='p-4 flex items-center justify-center h-screen'>
       { loading ? <Spinner/> : ''}
-      <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 w-auto' >
+      <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[500px] p-4' >
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Kural</label>
+          <label className='text-xl mr-4 text-gray-500'>குறள் : </label>
           <input type='text'
           value={title}
           onChange={(e)=> setTitle(e.target.value)}
@@ -62,7 +63,7 @@ const EditBook = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>KuralNo</label>
+          <label className='text-xl mr-4 text-gray-500'>குறள் எண்:</label>
           <input type='text'
           value={author}
           onChange={(e)=> setAuthor(e.target.value)}
@@ -70,7 +71,7 @@ const EditBook = () => {
           />
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>AdhigramEn</label>
+          <label className='text-xl mr-4 text-gray-500'>அத்தியாயம் எண் :</label>
           <input type='number'
           value={publishYear}
           onChange={(e)=> setPublishYear(e.target.value)}
@@ -78,10 +79,11 @@ const EditBook = () => {
           />
         </div>
         <button className='p-2 bg-sky-300 m-8 'onClick={handleSaveBook}>
-          Save
+        சேமிக்க 
         </button>
       </div>
     </div>
+    </>
   )
 }
 
