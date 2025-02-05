@@ -1,5 +1,5 @@
 import React from 'react';
-import './Spinner.css'; // Create a CSS file for custom animations
+import './Spinner.css'; 
 
 const Spinner = () => {
   return (

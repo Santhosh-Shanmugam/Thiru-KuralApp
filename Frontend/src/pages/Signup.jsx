@@ -3,28 +3,35 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Signup = () => {
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    if (!name || !email || !password) {
+    if (!username || !email || !password) {
       setError("Please fill in all the fields.");
       return;
     }
 
-    axios
-      .post("http://localhost:6969/signup", { name, email, password })
-      .then(() => {
-        navigate("/home");
-      })
-      .catch((err) => {
-        console.error(err);
-        setError("Error creating account. Please try again.");
-      });
+    try {
+      const response = await axios.post("http://localhost:6969/auth/signup", {
+        username,
+        email,
+        password,
+      });      
+      console.log(response.data.message);
+      navigate("/home");
+    } catch (err) {
+      console.error(err);
+      if (err.response && err.response.data) {
+        setError(err.response.data.message || "Error creating account.");
+      } else {
+        setError("Network error. Please try again later.");
+      }
+    }
   };
 
   return (
@@ -41,9 +48,9 @@ const Signup = () => {
         <form onSubmit={handleSignup}>
           <input
             type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="w-full text-sm bg-gray-100 border border-gray-300 px-4 py-3 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <input
@@ -71,7 +78,7 @@ const Signup = () => {
         <p className="text-sm text-center mt-4">
           Already Registered?{" "}
           <Link
-            to="/"
+            to="/home"
             className="font-medium text-blue-600 underline hover:text-blue-800"
           >
             Login

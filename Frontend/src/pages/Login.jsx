@@ -16,7 +16,7 @@ const Login = () => {
     }
 
     axios
-      .post("http://localhost:6969/login", { email, password })
+      .post("http://localhost:6969/auth/login", { email, password })
       .then((response) => {
         console.log(response.data);
         navigate("/home");
