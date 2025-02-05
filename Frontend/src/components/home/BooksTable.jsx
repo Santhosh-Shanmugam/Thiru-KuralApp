@@ -1,41 +1,31 @@
 import React from "react";
 import { PiBookOpenTextLight } from "react-icons/pi";
-import { BiUserCircle } from "react-icons/bi";
 import { AiOutlineEdit } from "react-icons/ai";
-import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineDelete } from "react-icons/md";
 
 const BooksTable = ({ books }) => {
-  console.log(books);
   return (
-    <div className="overflow-x-auto">
-      <table className="table-auto w-full border-collapse border border-gray-400">
-        <thead>
+    <div className="overflow-x-auto my-8">
+      <table className="table-auto w-full text-left border-separate border-spacing-0 border rounded-lg shadow-md">
+        <thead className="bg-sky-800 text-white">
           <tr>
-            <th className="border border-gray-400 px-4 py-2">திருக்குறள்</th>
-            <th className="border border-gray-400 px-4 py-2">குறள் ஏன்</th>
-            <th className="border border-gray-400 px-4 py-2">செயல்கள்</th>
+            <th className="px-6 py-4">📚 திருக்குறள்</th>
+            <th className="px-6 py-4">✍️ குறள் ஏன்</th>
+            {/* <th className="px-6 py-4">⚙️ செயல்கள்</th> */}
           </tr>
         </thead>
-        <tbody>
-          {books &&
-            books.map((book) => (
-              <tr key={book._id}>
-                <td className="border border-gray-400 px-4 py-2">{book.title}</td>
-                <td className="border border-gray-400 px-4 py-2 ">{book.author}</td>
-                <td className="border border-gray-400 px-4 py-2 flex gap-x-2">
-                  <span>
-                    <PiBookOpenTextLight className="text-red-300 text-2xl" />
-                  </span>
-                  <span>
-                    <AiOutlineEdit className="text-2xl text-yellow-600 hover:text-black" />
-                  </span>
-                  <span>
-                    <MdOutlineDelete className="text-2xl text-red-600 hover:text-black" />
-                  </span>
-                </td>
-              </tr>
-            ))}
+        <tbody className="bg-white">
+          {books && books.map((book) => (
+            <tr key={book._id} className="hover:bg-gray-100">
+              <td className="border-b px-6 py-4 font-medium">{book.title}</td>
+              <td className="border-b px-6 py-4">{book.author}</td>
+              {/* <td className="border-b px-6 py-4 flex items-center gap-x-4">
+                <PiBookOpenTextLight className="text-blue-500 text-xl cursor-pointer hover:scale-125 transition-transform" />
+                <AiOutlineEdit className="text-yellow-600 text-xl cursor-pointer hover:scale-125 transition-transform" />
+                <MdOutlineDelete className="text-red-600 text-xl cursor-pointer hover:scale-125 transition-transform" />
+              </td> */}
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
