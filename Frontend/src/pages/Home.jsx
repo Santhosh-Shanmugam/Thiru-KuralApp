@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { MdOutlineAddBox } from "react-icons/md";
-import { FaUserCircle, FaSignOutAlt } from "react-icons/fa"; 
+import { FaUserCircle, FaSignOutAlt } from "react-icons/fa";
 import BooksTable from "../components/home/BooksTable";
 import BooksCard from "../components/home/BooksCard";
 
@@ -11,7 +11,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState("table");
   const [user, setUser] = useState(null);
-  const [dropdownVisible, setDropdownVisible] = useState(false); 
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -21,7 +21,7 @@ const Home = () => {
 
     setLoading(true);
     axios
-      .get("http://localhost:6969/books/tasks")
+      .get("http://localhost:4000/books/tasks")
       .then((res) => {
         setBooks(res.data);
         setLoading(false);
@@ -35,7 +35,7 @@ const Home = () => {
   const handleSignOut = () => {
     localStorage.removeItem("user");
     setUser(null);
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   const toggleDropdown = () => {
@@ -96,7 +96,9 @@ const Home = () => {
       </div>
 
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-700 pl-4">📚 எனது குறள் பட்டியல்</h1>
+        <h1 className="text-3xl font-bold text-gray-700 pl-4">
+          📚 எனது குறள் பட்டியல்
+        </h1>
         <Link to="/books/create">
           <MdOutlineAddBox className="text-blue-600 text-5xl hover:text-blue-800 transition duration-300" />
         </Link>

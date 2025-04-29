@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import BackButton from '../components/BackButton';
-import Spinner from '../components/Spinner';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import BackButton from "../components/BackButton";
+import Spinner from "../components/Spinner";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateBook = () => {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [publishYear, setPublishYear] = useState('');
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [publishYear, setPublishYear] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -15,14 +15,14 @@ const CreateBook = () => {
     const data = {
       title,
       author,
-      publishYear,
+      publishYear: Number(publishYear), // Ensure it's a number
     };
     setLoading(true);
     axios
-      .post('http://localhost:6969/books/create', data)
+      .post("http://localhost:4000/books/create", data)
       .then(() => {
         setLoading(false);
-        navigate('/home');
+        navigate("/home");
       })
       .catch((err) => {
         setLoading(false);
@@ -34,12 +34,16 @@ const CreateBook = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
       <BackButton />
-      <h1 className="text-4xl font-bold text-blue-600 my-6">குறளை உருவாக்குங்கள்</h1>
+      <h1 className="text-4xl font-bold text-blue-600 my-6">
+        குறளை உருவாக்குங்கள்
+      </h1>
       <div className="bg-white shadow-lg rounded-2xl w-full max-w-md p-8">
         {loading && <Spinner />}
         <div className="flex flex-col space-y-6">
           <div>
-            <label className="block text-lg font-medium text-gray-700 mb-2">குறள் :</label>
+            <label className="block text-lg font-medium text-gray-700 mb-2">
+              குறள் :
+            </label>
             <input
               type="text"
               value={title}
@@ -48,7 +52,9 @@ const CreateBook = () => {
             />
           </div>
           <div>
-            <label className="block text-lg font-medium text-gray-700 mb-2">குறள் எண் :</label>
+            <label className="block text-lg font-medium text-gray-700 mb-2">
+              ஆசிரியர் :
+            </label>
             <input
               type="text"
               value={author}
@@ -57,7 +63,9 @@ const CreateBook = () => {
             />
           </div>
           <div>
-            <label className="block text-lg font-medium text-gray-700 mb-2">அத்தியாயம் எண் :</label>
+            <label className="block text-lg font-medium text-gray-700 mb-2">
+              அத்தியாயம் எண் :
+            </label>
             <input
               type="number"
               value={publishYear}

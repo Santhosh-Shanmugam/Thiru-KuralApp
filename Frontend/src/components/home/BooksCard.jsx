@@ -45,12 +45,12 @@ const BooksCard = ({ books }) => {
               <div className="flex justify-start items-center gap-x-2">
                 <PiBookOpenTextLight className="text-red-900 text-4xl" />
               </div>
-              <div className="text-gray-1000 font-bold mt-2 ml-12 my-1">
-                குறள் எண் : '{item.author}'
-              </div>
               <div className="my-4 mx-12">
                 <p className="text-lg text-gray-600">{firstLine}</p>
                 <p className="text-lg text-gray-600">{secondLine}</p>
+              </div>
+              <div className="text-gray-1000 font-bold mt-2 ml-12 my-1">
+                குறள் விளக்கம் : '{item.author}'
               </div>
               <div className="flex justify-between items-center gap-x-2 mt-4 p-4">
                 <Link to={`/books/edit/${item._id}`}>
